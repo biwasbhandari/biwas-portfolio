@@ -1,20 +1,26 @@
 import Link from "next/link";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ProjectShowcase() {
   return (
-    <div className="row-span-1 bg-secondary/10 rounded-lg p-4">
-      <h2 className="text-xl font-semibold mb-4">Current Project</h2>
-      <h3 className="font-semibold mb-2">Sprint</h3>
-      <p className="text-sm text-muted-foreground mb-4">
-        Easily trade memecoins and tokens via chat
-      </p>
-      <Link
-        href="https://sprint.aibtc.dev"
-        target="_blank"
-        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3 py-2"
-      >
-        View Project
-      </Link>
+    <div className="col-span-full lg:col-span-1 row-span-1 animate-fade-in-up">
+      <Card>
+        <CardHeader>
+          <CardTitle>Currently building</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <h3 className="font-semibold mb-2">AIBtc Championship</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Easily trade memecoins and tokens via chat
+          </p>
+          <Button asChild variant="outline">
+            <Link href="https://sprint.aibtc.dev" target="_blank">
+              View Project
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }

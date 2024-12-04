@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <div className="col-span-3 bg-secondary/10 rounded-lg p-4 text-center text-sm">
-      Built with Next.js and shadcn/ui | Deployed on Vercel
-    </div>
+    <footer className="col-span-full text-center text-sm text-muted-foreground py-4 animate-fade-in">
+      © {new Date().getFullYear()} Biwas Bhandari. All rights reserved.
+    </footer>
   );
 }
