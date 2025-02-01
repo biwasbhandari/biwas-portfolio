@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Biwas Bhandari - AI Application Developer",
-  description:
-    "I create AI applications. Explore insights, innovations, and more.",
+  title: "Biwas Bhandari | AI Application Developer",
+  description: "Building AI applications with LLMs.",
   icons: {
     icon: [
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -33,25 +32,23 @@ export const metadata: Metadata = {
   manifest: "/favicon/site.webmanifest",
   openGraph: {
     type: "website",
-    title: "Biwas Bhandari - AI Application Developer",
-    description:
-      "I create AI applications. Explore insights, innovations, and more.",
+    title: "Biwas Bhandari | AI Application Developer",
+    description: "Building AI applications with LLMs.",
     url: "https://www.biwasbhandari.com.np",
     images: [
       {
         url: "https://www.biwasbhandari.com.np/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Generative AI Application by Biwas Bhandari",
+        alt: "AI Developer - Biwas Bhandari",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Biwas Bhandari - AI Application Developer",
-    description:
-      "Explore cutting-edge Generative AI applications innovations by Biwas Bhandari.",
-    site: "@bwias_",
+    title: "Biwas Bhandari | AI Application Developer",
+    description: "Building AI applications with LLMs.",
+    site: "@biwas_",
     creator: "@biwas_",
     images: ["https://www.biwasbhandari.com.np/og-image.png"],
   },
