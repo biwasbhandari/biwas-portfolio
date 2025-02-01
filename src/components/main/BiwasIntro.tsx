@@ -8,80 +8,74 @@ const content = [
   {
     title: "LLM Enthusiast",
     description:
-      "Biwas Bhandari is a software developer with a passion for Large Language Models. He specializes in creating cutting-edge AI applications that push the boundaries of what's possible with natural language processing.",
+      "I'm a passionate software developer with a deep fascination for Large Language Models. My expertise lies in developing innovative AI applications that harness the power of natural language processing to create impactful solutions.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center ">
-        <Image
-          src="/biwas.jpg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover rounded-md"
-          alt="Biwas Bhandari"
-        />
-      </div>
+      <Image
+        src="/biwas.jpg"
+        width={300}
+        height={300}
+        className="h-full w-full object-cover rounded-full"
+        alt="Biwas Bhandari"
+        style={{ objectPosition: "center 25%" }}
+      />
     ),
   },
   {
     title: "Tech Stack Maestro",
     description:
-      "With expertise in Langchain, FastAPI, Next.js, and Supabase, Biwas crafts robust and scalable applications. His full-stack prowess enables him to bring AI-powered ideas to life from concept to deployment.",
+      "My toolkit includes Langchain, FastAPI, Next.js, and Supabase, enabling me to build end-to-end solutions. As a full-stack developer, I bridge the gap between AI concepts and production-ready applications.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--pink-500),var(--indigo-500))] flex items-center justify-center  p-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex items-center justify-center bg-white/10 rounded-md p-2">
-            Langchain
+      <div className="grid grid-cols-2 gap-4 h-full w-full p-4">
+        {["Langchain", "FastAPI", "Next.js", "Supabase"].map((tech) => (
+          <div
+            key={tech}
+            className="flex items-center justify-center bg-white/10 rounded-full p-4 text-center"
+          >
+            {tech}
           </div>
-          <div className="flex items-center justify-center bg-white/10 rounded-md p-2">
-            FastAPI
-          </div>
-          <div className="flex items-center justify-center bg-white/10 rounded-md p-2">
-            Next.js
-          </div>
-          <div className="flex items-center justify-center bg-white/10 rounded-md p-2">
-            Supabase
-          </div>
-        </div>
+        ))}
       </div>
     ),
   },
   {
     title: "Entertainment Aficionado",
     description:
-      "When not coding, Biwas immerses himself in the world of anime, binge-worthy series, and thought-provoking documentaries. His diverse interests fuel his creativity and problem-solving skills.",
+      "When I step away from the keyboard, I dive into the vibrant worlds of anime, engaging TV series, and enlightening documentaries. These diverse interests inspire my creative approach to problem-solving.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] flex items-center justify-center ">
-        <div className="grid grid-cols-3 gap-2">
-          <span className="text-4xl">🍿</span>
-          <span className="text-4xl">📺</span>
-          <span className="text-4xl">🎭</span>
-        </div>
+      <div className="grid grid-cols-3 gap-4 h-full w-full p-4">
+        {["🍿", "📺", "🎭"].map((emoji, index) => (
+          <div
+            key={index}
+            className="flex items-center justify-center text-6xl bg-white/10 rounded-full"
+          >
+            {emoji}
+          </div>
+        ))}
       </div>
     ),
   },
   {
     title: "Connect with Biwas",
     description:
-      "Interested in collaborating or just want to say hi? Check out Biwas's GitHub for his latest projects and contributions to the world of AI and software development.",
+      "Interested in collaborating or just want to say hi? Check out my GitHub (@biwasbhandari) for latest projects and contributions to the world of AI and software development.",
     content: (
-      <div className="h-full w-full bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] flex items-center justify-center ">
-        <a
-          href="https://github.com/biwasbhandari"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center space-x-2 bg-white/10 rounded-md p-4 hover:bg-white/20 transition-colors"
-        >
-          <Github size={24} />
-          <span className="text-lg font-semibold">GitHub</span>
-        </a>
-      </div>
+      <a
+        href="https://github.com/biwasbhandari"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center space-x-2 bg-white/10 rounded-full p-6 hover:bg-white/20 transition-colors h-full w-full"
+      >
+        <Github size={32} />
+        <span className="text-2xl font-semibold">GitHub</span>
+      </a>
     ),
   },
 ];
 
 export default function BiwasBhandariIntro() {
   return (
-    <div className="p-10 min-h-screen flex items-center flex-col justify-center">
-      <h1 className="text-4xl font-bold text-center mb-8 ">
+    <div className="min-h-screen flex flex-col items-center justify-center p-8">
+      <h1 className="text-4xl font-bold text-center mb-8">
         Meet Biwas Bhandari
       </h1>
       <StickyScroll content={content} />

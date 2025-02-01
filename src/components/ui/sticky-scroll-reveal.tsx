@@ -1,22 +1,27 @@
 "use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export const StickyScroll = ({
+interface ContentItem {
+  title: string;
+  description: string;
+  content?: React.ReactNode;
+}
+
+interface StickyScrollProps {
+  content: ContentItem[];
+  contentClassName?: string;
+}
+
+export const StickyScroll: React.FC<StickyScrollProps> = ({
   content,
   contentClassName,
-}: {
-  content: {
-    title: string;
-    description: string;
-    content?: React.ReactNode | any;
-  }[];
-  contentClassName?: string;
 }) => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
+  const [activeCard, setActiveCard] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     container: ref,
     offset: ["start start", "end start"],
@@ -38,67 +43,48 @@ export const StickyScroll = ({
     setActiveCard(closestBreakpointIndex);
   });
 
-  const linearGradients = [
-    "linear-gradient(to bottom right, hsl(0 0% 0%), hsl(0 0% 0%))",
-    "linear-gradient(to bottom right, hsl(0 0% 0%), hsl(0 0% 0%))",
-    "linear-gradient(to bottom right, hsl(0 0% 0%), hsl(0 0% 0%))",
-  ];
-
-  const [backgroundGradient, setBackgroundGradient] = useState(
-    linearGradients[0]
-  );
-
-  useEffect(() => {
-    setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  }, [activeCard]);
-
   return (
     <div
-      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10 bg-background"
       ref={ref}
+      className="h-[30rem] overflow-y-auto flex justify-center relative space-x-10 rounded-md p-10 bg-background"
     >
-      <div className="div relative flex items-start px-4">
+      <div className="relative flex items-start px-4">
         <div className="max-w-2xl">
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-20">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-foreground"
-              >
+            <motion.div
+              key={item.title + index}
+              className="my-20"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-2xl font-bold text-foreground">
                 {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg text-muted-foreground max-w-sm mt-10"
-              >
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-sm mt-4">
                 {item.description}
-              </motion.p>
-            </div>
+              </p>
+            </motion.div>
           ))}
           <div className="h-40" />
         </div>
       </div>
-      <div
-        style={{ background: backgroundGradient }}
+      <motion.div
         className={cn(
-          "hidden lg:block h-60 w-80 rounded-md sticky top-10 overflow-hidden",
+          "hidden lg:block h-[300px] w-[300px] sticky top-10 overflow-hidden",
           contentClassName
         )}
+        animate={{
+          background: `linear-gradient(to bottom right, var(--${
+            ["cyan", "emerald", "orange", "yellow"][activeCard % 4]
+          }-500), var(--${
+            ["emerald", "cyan", "yellow", "orange"][activeCard % 4]
+          }-500))`,
+        }}
+        transition={{ duration: 0.5 }}
       >
-        {content[activeCard].content ?? null}
-      </div>
+        {content[activeCard].content}
+      </motion.div>
     </div>
   );
 };
-
-export default StickyScroll;
