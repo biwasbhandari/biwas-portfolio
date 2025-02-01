@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import { metadata } from "./metadata";
+import type React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,43 +17,18 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "Biwas Bhandari - AI Application Developer",
-  description:
-    "I create AI applications. Explore insights, innovations, and more.",
-  openGraph: {
-    type: "website",
-    title: "Biwas Bhandari - AI Application Developer",
-    description:
-      "I create AI applications. Explore insights, innovations, and more.",
-    url: "https://www.biwasbhandari.com",
-    images: [
-      {
-        url: "https://www.biwasbhandari.com/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Generative AI Application by Biwas Bhandari",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Biwas Bhandari - AI Application Developer",
-    description:
-      "Explore cutting-edge Generative AI applications innovations by Biwas Bhandari.",
-    site: "@biwasbhandari",
-    creator: "@biwasbhandari",
-    images: ["https://www.biwasbhandari.com/og-image.png"],
-  },
-  viewport: "width=device-width, initial-scale=1.0",
-  robots: "index, follow",
+export { metadata };
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
