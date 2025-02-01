@@ -17,6 +17,7 @@ const content = [
         className="h-full w-full object-cover rounded-full"
         alt="Biwas Bhandari"
         style={{ objectPosition: "center 25%" }}
+        priority
       />
     ),
   },
